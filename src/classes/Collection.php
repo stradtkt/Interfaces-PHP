@@ -1,6 +1,6 @@
 <?php
 
-class Collection implements Iterator, Countable
+class Collection implements CollectionInterface
 {
     protected $repo;
     public $collection;
@@ -14,6 +14,20 @@ class Collection implements Iterator, Countable
            $this->collection = $this->repo->all('posts');
        }
     }
+    public function shortDescription()
+    {
+        if(strlen($this->current()->details) < 510) {
+            return strip_tags($this->current()->details);
+        }
+        return strip_tags(
+            substr(
+                $this->current()->details,
+                0,
+                strpos($this->current()->details, ' ', 500)
+            )
+        ) . '...';
+    }
+
     public function current()
     {
         return current($this->collection);

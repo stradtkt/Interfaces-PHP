@@ -9,4 +9,5 @@ require 'views/header.php';
 foreach ($content as $item) {
     echo $item->title;
 }
+require 'views/list.php';
 require 'views/footer.php';
