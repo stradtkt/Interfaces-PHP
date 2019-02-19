@@ -5,4 +5,6 @@ $title = "My Website";
 
 require 'views/header.php';
 
+var_dump($repo->all('posts'));
+
 require 'views/footer.php';
